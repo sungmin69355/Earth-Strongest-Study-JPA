@@ -19,17 +19,20 @@ public class JpaMain {
         tx.begin();
 
         try{
-//            Member member = new Member();
-//            member.setId(1L);
-//            member.setName("hello");
-//
-//            em.persist(member);
-            List<Member> findMembers = em.createQuery("select m from Member as m", Member.class)
-                            .getResultList();
+            //비영속
+            Member member = new Member();
+            member.setId(100L);
+            member.setName("hello");
 
-            for( Member member : findMembers){
-                System.out.println("member.name = " + member.getName());
-            }
+            //영속 (이 시점에 DB에 저장 x)
+            em.persist(member);
+
+//            List<Member> findMembers = em.createQuery("select m from Member as m", Member.class)
+//                            .getResultList();
+//
+//            for( Member member : findMembers){
+//                System.out.println("member.name = " + member.getName());
+//            }
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
