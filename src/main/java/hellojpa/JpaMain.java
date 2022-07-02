@@ -19,14 +19,17 @@ public class JpaMain {
         tx.begin();
 
         try{
-            //비영속
-            Member member = new Member();
-            member.setId(100L);
-            member.setName("hello");
+            //영속
+            Member member = em.find(Member.class, 100L);
+            member.setName("hello1111");
 
-            //영속 (이 시점에 DB에 저장 x)
-            em.persist(member);
+            //JPA가 관리x 준영속성상태
+            em.detach(member);
 
+            //완전히 초기화해서 영속성컨텍스트를 통으로 지워줌 (Test 코드짤 때 유용)
+            em.clear();
+
+            tx.commit();
 //            List<Member> findMembers = em.createQuery("select m from Member as m", Member.class)
 //                            .getResultList();
 //
