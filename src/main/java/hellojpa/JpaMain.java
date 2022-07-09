@@ -21,7 +21,7 @@ public class JpaMain {
         try{
             //영속
             Member member = em.find(Member.class, 100L);
-            member.setName("hello1111");
+            member.setUsername("hello1111");
 
             //JPA가 관리x 준영속성상태
             em.detach(member);
