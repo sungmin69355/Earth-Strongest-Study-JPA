@@ -8,9 +8,9 @@ import javax.persistence.Persistence;
 public class JpaMain {
     public static void main(String[] args) {
         //웹서버 띄우는 시점에 한번만 올라온다.
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");;
 
-        //쓰레드간에 공유x(사용하고 버리자)
+        //쓰레드간에 공유x(사용하고 버리자);
         EntityManager em = emf.createEntityManager();
 
         EntityTransaction tx = em.getTransaction();
