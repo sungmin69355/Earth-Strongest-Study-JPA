@@ -13,8 +13,8 @@ public class Member extends BaseEntity {
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
-
     private String name;
-    private String street;
-    private String zipcode;
+
+    @Embedded
+    private Address address;
 }
